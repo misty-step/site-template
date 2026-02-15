@@ -84,6 +84,9 @@ export interface SiteConfig {
   
   // Meta
   demoMode: boolean; // shows "Demo redesign by Misty Step" footer badge
+  
+  // Deployment base path (e.g., '/the-farm-house-demo' for GitHub Pages subdir)
+  basePath?: string;
 }
 
 // Example: The Copper Kettle - A Nashville Restaurant
