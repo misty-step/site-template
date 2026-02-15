@@ -1,0 +1,46 @@
+---
+interface Props {
+  headline: string;
+  subtext: string;
+  image: string;
+  cta?: { text: string; url: string };
+}
+
+const { headline, subtext, image, cta } = Astro.props;
+---
+
+<section class="relative min-h-[60vh] md:min-h-[70vh] flex items-center bg-background">
+  <div class="container">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+      <!-- Content -->
+      <div class="text-center lg:text-left order-2 lg:order-1">
+        <h1 class="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-secondary leading-tight">
+          {headline}
+        </h1>
+        <p class="text-lg md:text-xl text-text/80 mb-8 max-w-xl mx-auto lg:mx-0">
+          {subtext}
+        </p>
+        {cta && (
+          <a 
+            href={cta.url}
+            class="inline-block bg-primary text-white px-8 py-4 md:px-10 md:py-4 rounded-md text-lg font-medium hover:bg-accent hover:text-secondary transition-all duration-300 transform hover:scale-105"
+          >
+            {cta.text}
+          </a>
+        )}
+      </div>
+      
+      <!-- Image -->
+      <div class="order-1 lg:order-2">
+        <div class="relative aspect-[4/3] md:aspect-[4/3] lg:aspect-square overflow-hidden rounded-lg shadow-medium">
+          <img 
+            src={image} 
+            alt=""
+            class="w-full h-full object-cover"
+            loading="eager"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

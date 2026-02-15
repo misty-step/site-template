@@ -1,0 +1,35 @@
+---
+import type { SiteConfig } from '../../config/site.config';
+import GalleryGrid2 from './GalleryGrid2.astro';
+import GalleryGrid3 from './GalleryGrid3.astro';
+import GalleryMasonry from './GalleryMasonry.astro';
+import GalleryCarousel from './GalleryCarousel.astro';
+
+interface Props {
+  config: SiteConfig;
+}
+
+const { config } = Astro.props;
+const { gallery, designGenome } = config;
+
+// Default to 'grid-3' if not specified
+const galleryStyle = designGenome?.galleryStyle || 'grid-3';
+
+const { images } = gallery;
+---
+
+{galleryStyle === 'grid-2' && (
+  <GalleryGrid2 images={images} />
+)}
+
+{galleryStyle === 'grid-3' && (
+  <GalleryGrid3 images={images} />
+)}
+
+{galleryStyle === 'masonry' && (
+  <GalleryMasonry images={images} />
+)}
+
+{galleryStyle === 'carousel' && (
+  <GalleryCarousel images={images} />
+)}

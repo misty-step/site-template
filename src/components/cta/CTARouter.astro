@@ -1,0 +1,45 @@
+---
+import type { SiteConfig } from '../../config/site.config';
+import CTABanner from './CTABanner.astro';
+import CTAFloating from './CTAFloating.astro';
+import CTAInline from './CTAInline.astro';
+
+interface Props {
+  config: SiteConfig;
+}
+
+const { config } = Astro.props;
+const { cta, designGenome } = config;
+
+// Default to 'banner' if not specified
+const ctaStyle = designGenome?.ctaStyle || 'banner';
+
+const { heading, text, buttonText, buttonUrl } = cta;
+---
+
+{ctaStyle === 'banner' && (
+  <CTABanner 
+    heading={heading}
+    text={text}
+    buttonText={buttonText}
+    buttonUrl={buttonUrl}
+  />
+)}
+
+{ctaStyle === 'floating' && (
+  <CTAFloating 
+    heading={heading}
+    text={text}
+    buttonText={buttonText}
+    buttonUrl={buttonUrl}
+  />
+)}
+
+{ctaStyle === 'inline' && (
+  <CTAInline 
+    heading={heading}
+    text={text}
+    buttonText={buttonText}
+    buttonUrl={buttonUrl}
+  />
+)}

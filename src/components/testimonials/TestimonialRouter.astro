@@ -1,0 +1,30 @@
+---
+import type { SiteConfig } from '../../config/site.config';
+import TestimonialCards from './TestimonialCards.astro';
+import TestimonialQuotes from './TestimonialQuotes.astro';
+import TestimonialSlider from './TestimonialSlider.astro';
+
+interface Props {
+  config: SiteConfig;
+}
+
+const { config } = Astro.props;
+const { testimonials, designGenome } = config;
+
+// Default to 'cards' if not specified
+const testimonialStyle = designGenome?.testimonialStyle || 'cards';
+
+const { quotes } = testimonials;
+---
+
+{testimonialStyle === 'cards' && (
+  <TestimonialCards quotes={quotes} />
+)}
+
+{testimonialStyle === 'quotes' && (
+  <TestimonialQuotes quotes={quotes} />
+)}
+
+{testimonialStyle === 'slider' && (
+  <TestimonialSlider quotes={quotes} />
+)}

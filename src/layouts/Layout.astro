@@ -1,0 +1,121 @@
+---
+import '../styles/global.css';
+import type { SiteConfig } from '../config/site.config';
+
+interface Props {
+  config: SiteConfig;
+}
+
+const { config } = Astro.props;
+const { name, description, url, colors, fonts, designGenome } = config;
+
+// Build genome-driven CSS classes
+const genome = designGenome || {};
+const genomeClasses = [
+  // Section spacing
+  genome.sectionSpacing === 'tight' ? 'section-tight' :
+  genome.sectionSpacing === 'normal' ? 'section-normal' :
+  genome.sectionSpacing === 'airy' ? 'section-airy' :
+  genome.sectionSpacing === 'dramatic' ? 'section-dramatic' : '',
+  
+  // Content width
+  genome.maxWidth === 'narrow' ? 'width-narrow' :
+  genome.maxWidth === 'standard' ? 'width-standard' :
+  genome.maxWidth === 'wide' ? 'width-wide' :
+  genome.maxWidth === 'full' ? 'width-full' : '',
+  
+  // Border radius
+  genome.roundness === 'none' ? 'radius-none' :
+  genome.roundness === 'subtle' ? 'radius-subtle' :
+  genome.roundness === 'rounded' ? 'radius-rounded' :
+  genome.roundness === 'pill' ? 'radius-pill' : '',
+  
+  // Shadows
+  genome.shadowStyle === 'none' ? 'shadow-none' :
+  genome.shadowStyle === 'subtle' ? 'shadow-subtle' :
+  genome.shadowStyle === 'medium' ? 'shadow-medium' :
+  genome.shadowStyle === 'dramatic' ? 'shadow-dramatic' : '',
+  
+  // Image treatment
+  genome.imageTreatment === 'raw' ? 'img-raw' :
+  genome.imageTreatment === 'rounded' ? 'img-rounded' :
+  genome.imageTreatment === 'masked' ? 'img-masked' :
+  genome.imageTreatment === 'overlay' ? 'img-overlay' : '',
+  
+  // Animation level (adds animation classes to elements)
+  genome.animationLevel === 'subtle' ? 'animate-fade-in' :
+  genome.animationLevel === 'moderate' ? 'animate-slide-up' : ''
+].filter(Boolean).join(' ');
+
+// Build dynamic styles for theming
+const themeStyles = `
+  :root {
+    --color-primary: ${colors.primary};
+    --color-secondary: ${colors.secondary};
+    --color-accent: ${colors.accent};
+    --color-background: ${colors.background};
+    --color-text: ${colors.text};
+  }
+  
+  .font-heading { font-family: '${fonts.heading}', serif; }
+  .font-body { font-family: '${fonts.body}', serif; }
+  
+  .text-primary { color: var(--color-primary); }
+  .text-secondary { color: var(--color-secondary); }
+  .text-accent { color: var(--color-accent); }
+  .bg-primary { background-color: var(--color-primary); }
+  .bg-secondary { background-color: var(--color-secondary); }
+  .bg-accent { background-color: var(--color-accent); }
+  .bg-background { background-color: var(--color-background); }
+  .border-primary { border-color: var(--color-primary); }
+  .border-accent { border-color: var(--color-accent); }
+  
+  .hover\\:bg-primary:hover { background-color: var(--color-primary); }
+  .hover\\:text-primary:hover { color: var(--color-primary); }
+  .hover\\:bg-accent:hover { background-color: var(--color-accent); }
+`;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="generator" content={Astro.generator} />
+  
+  <!-- Primary Meta Tags -->
+  <title>{name} - {config.tagline}</title>
+  <meta name="title" content={`${name} - ${config.tagline}`} />
+  <meta name="description" content={description} />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={url} />
+  <meta property="og:title" content={`${name} - ${config.tagline}`} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={`${url}/images/og-image.jpg`} />
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content={url} />
+  <meta property="twitter:title" content={`${name} - ${config.tagline}`} />
+  <meta property="twitter:description" content={description} />
+  <meta property="twitter:image" content={`${url}/images/og-image.jpg`} />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  
+  <!-- Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+  <!-- Dynamic Theme Styles -->
+  <style set:html={themeStyles} />
+</head>
+<body class={`font-body ${genomeClasses}`}>
+  <!-- Skip to content link for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  
+  <slot />
+</body>
+</html>

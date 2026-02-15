@@ -1,0 +1,153 @@
+---
+interface Quote {
+  text: string;
+  author: string;
+  source?: string;
+}
+
+interface Props {
+  quotes: Quote[];
+}
+
+const { quotes } = Astro.props;
+---
+
+<section class="bg-secondary text-white" id="testimonials">
+  <div class="container">
+    <div class="text-center mb-12">
+      <h2 class="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+        What Our Guests Say
+      </h2>
+      <div class="w-20 h-1 bg-accent mx-auto"></div>
+    </div>
+    
+    <!-- Slider with scroll-snap -->
+    <div class="relative max-w-3xl mx-auto">
+      <!-- Slider container -->
+      <div 
+        class="overflow-x-auto snap-x snap-mandatory scrollbar-hide"
+        style="scrollbar-width: none; -ms-overflow-style: none;"
+      >
+        <div class="flex">
+          {quotes.map((quote, index) => (
+            <div class="flex-shrink-0 w-full snap-center px-4">
+              <article class="text-center">
+                <blockquote class="relative">
+                  <span class="absolute -top-8 left-1/2 -translate-x-1/2 font-heading text-8xl text-accent/20" aria-hidden="true">
+                    "
+                  </span>
+                  <p class="text-xl md:text-2xl italic text-white/90 leading-relaxed relative z-10">
+                    {quote.text}
+                  </p>
+                </blockquote>
+                <footer class="mt-6">
+                  <cite class="not-italic">
+                    <span class="font-bold text-accent text-lg block">{quote.author}</span>
+                    {quote.source && (
+                      <span class="text-white/60 text-base">{quote.source}</span>
+                    )}
+                  </cite>
+                </footer>
+              </article>
+            </div>
+          ))}
+        </div>
+      </div>
+      
+      <!-- Navigation buttons -->
+      <div class="flex justify-center gap-4 mt-8">
+        <button 
+          class="prev-btn w-12 h-12 rounded-full border-2 border-white/30 hover:border-accent hover:text-accent transition-colors flex items-center justify-center"
+          aria-label="Previous testimonial"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        
+        <!-- Dots -->
+        <div class="flex items-center gap-2">
+          {quotes.map((_, index) => (
+            <button
+              class="w-2 h-2 rounded-full bg-white/30 hover:bg-accent transition-colors dot-indicator"
+              aria-label={`Go to testimonial ${index + 1}`}
+              data-index={index}
+            />
+          ))}
+        </div>
+        
+        <button 
+          class="next-btn w-12 h-12 rounded-full border-2 border-white/30 hover:border-accent hover:text-accent transition-colors flex items-center justify-center"
+          aria-label="Next testimonial"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+
+<script>
+  const container = document.querySelector('.overflow-x-auto');
+  const dots = document.querySelectorAll('.dot-indicator');
+  const prevBtn = document.querySelector('.prev-btn');
+  const nextBtn = document.querySelector('.next-btn');
+  
+  let currentIndex = 0;
+  
+  function updateDots(index: number) {
+    dots.forEach((dot, i) => {
+      if (i === index) {
+        dot.classList.add('bg-accent');
+        dot.classList.remove('bg-white/30');
+      } else {
+        dot.classList.remove('bg-accent');
+        dot.classList.add('bg-white/30');
+      }
+    });
+  }
+  
+  function scrollToIndex(index: number) {
+    if (container && dots.length > 0) {
+      const itemWidth = container.scrollWidth / dots.length;
+      container.scrollTo({
+        left: itemWidth * index,
+        behavior: 'smooth'
+      });
+      currentIndex = index;
+      updateDots(index);
+    }
+  }
+  
+  // Update dots on scroll
+  if (container) {
+    container.addEventListener('scroll', () => {
+      const scrollLeft = container.scrollLeft;
+      const itemWidth = container.scrollWidth / dots.length;
+      const activeIndex = Math.round(scrollLeft / itemWidth);
+      updateDots(activeIndex);
+    });
+  }
+  
+  // Prev/Next buttons
+  prevBtn?.addEventListener('click', () => {
+    const newIndex = Math.max(0, currentIndex - 1);
+    scrollToIndex(newIndex);
+  });
+  
+  nextBtn?.addEventListener('click', () => {
+    const newIndex = Math.min(dots.length - 1, currentIndex + 1);
+    scrollToIndex(newIndex);
+  });
+  
+  // Initialize first dot
+  updateDots(0);
+</script>

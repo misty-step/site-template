@@ -1,197 +1,60 @@
 ---
-import Base from '../layouts/Base.astro';
-import Nav from '../components/Nav.astro';
-import Footer from '../components/Footer.astro';
+import Layout from '../layouts/Layout.astro';
+import NavRouter from '../components/nav/NavRouter.astro';
+import HeroRouter from '../components/hero/HeroRouter.astro';
+import About from '../components/About.astro';
+import TestimonialRouter from '../components/testimonials/TestimonialRouter.astro';
+import Menu from '../components/Menu.astro';
+import GalleryRouter from '../components/gallery/GalleryRouter.astro';
+import Hours from '../components/Hours.astro';
+import CTARouter from '../components/cta/CTARouter.astro';
+import FooterRouter from '../components/footer/FooterRouter.astro';
+import { siteConfig } from '../config/site.config';
+
+const config = siteConfig;
 ---
 
-<Base title="Hillside Imports – Expert VW & Audi Care Since 1999" googleFontsQuery="family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" demoMode={true}>
-  <Nav />
+<Layout config={config}>
+  <NavRouter config={config} />
   
-  <!-- Hero -->
-  <section class="relative h-screen flex items-center justify-center overflow-hidden bg-cover bg-center" style="background-image: url('/hero-bg.jpg');">
-    <div class="absolute inset-0 bg-black/65"></div>
-    <div class="relative z-10 text-center text-white px-6 max-w-4xl mx-auto">
-      <h1 class="font-heading text-5xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight">EXPERT VW & AUDI CARE</h1>
-      <h2 class="font-heading text-3xl md:text-4xl font-normal mb-8 opacity-90">SINCE 1999</h2>
-      <p class="text-xl md:text-2xl mb-12 font-semibold">Family Owned & Operated · Skilled · Accessible · Reliable</p>
-      
-      <!-- Marquee -->
-      <div class="marquee mb-12 overflow-hidden whitespace-nowrap">
-        <div class="inline-block animate-marquee text-2xl md:text-3xl font-semibold">
-          BUILDING RELATIONSHIPS ONE REPAIR AT A TIME · 
-        </div>
-      </div>
-      
-      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-md mx-auto">
-        <a href="tel:503-293-0146" class="bg-[var(--color-brand)] text-white px-8 py-4 rounded-[var(--radius-btn)] font-semibold text-lg hover:bg-[#a23f00] transition-all w-full sm:w-auto text-center">Call 503-293-0146</a>
-        <a href="/contact" class="border-2 border-white text-white px-8 py-4 rounded-[var(--radius-btn)] font-semibold text-lg hover:bg-white hover:text-black transition-all w-full sm:w-auto text-center">Schedule Service</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Stats Bar -->
-  <section class="bg-[#222] py-8">
-    <div class="container mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
-      <div><span class="block text-2xl font-bold font-heading">Est. 1999</span></div>
-      <div><span class="block text-2xl font-bold font-heading">VW & Audi Only</span></div>
-      <div><span class="block text-2xl font-bold font-heading">4.5★ Yelp</span></div>
-      <div><span class="block text-2xl font-bold font-heading">Factory-Trained Techs</span></div>
-    </div>
-  </section>
-
-  <!-- Services Preview -->
-  <section class="bg-[var(--color-bg)] py-20 px-6">
-    <div class="container mx-auto text-center mb-16">
-      <h2 class="font-heading text-4xl md:text-5xl font-black text-[var(--color-text)] mb-6">VW & AUDI SERVICES</h2>
-    </div>
-    <div class="container mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 max-w-6xl">
-      <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all">
-        <span class="text-3xl mb-4">🛠️</span>
-        <h3 class="font-heading font-bold text-xl mb-2">Timing Belt</h3>
-        <p>Precision replacement to prevent engine damage</p>
-      </div>
-      <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all">
-        <span class="text-3xl mb-4">⚙️</span>
-        <h3 class="font-heading font-bold text-xl mb-2">Transmission</h3>
-        <p>DSG, manual, auto repair & service</p>
-      </div>
-      <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all">
-        <span class="text-3xl mb-4">🔧</span>
-        <h3 class="font-heading font-bold text-xl mb-2">Suspension</h3>
-        <p>Control arms, shocks, struts upgrade</p>
-      </div>
-      <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all">
-        <span class="text-3xl mb-4">⛽</span>
-        <h3 class="font-heading font-bold text-xl mb-2">TDI Diesel</h3>
-        <p>Diesel specialist maintenance & repair</p>
-      </div>
-      <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all">
-        <span class="text-3xl mb-4">🔇</span>
-        <h3 class="font-heading font-bold text-xl mb-2">Exhaust</h3>
-        <p>Catalytic converters, O2 sensors</p>
-      </div>
-      <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all">
-        <span class="text-3xl mb-4">⚡️</span>
-        <h3 class="font-heading font-bold text-xl mb-2">Electrical</h3>
-        <p>Wiring, ignition system diagnostics</p>
-      </div>
-      <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all">
-        <span class="text-3xl mb-4">🔋</span>
-        <h3 class="font-heading font-bold text-xl mb-2">EV Repair</h3>
-        <p>Electric vehicle service expertise</p>
-      </div>
-      <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all">
-        <span class="text-3xl mb-4">💡</span>
-        <h3 class="font-heading font-bold text-xl mb-2">Headlight Restoration</h3>
-        <p>Like-new clarity for safer driving</p>
-      </div>
-    </div>
-    <div class="text-center mt-16">
-      <a href="/services" class="inline-block bg-[var(--color-brand)] text-white px-8 py-4 rounded-[var(--radius-btn)] font-semibold text-xl hover:bg-[#a23f00] transition-all">See all services →</a>
-    </div>
-  </section>
-
-  <!-- About -->
-  <section class="py-20 px-6 bg-[var(--color-bg-alt)]">
-    <div class="container mx-auto grid md:grid-cols-2 gap-12 items-center max-w-6xl">
-      <div>
-        <img src="/shop-exterior.jpg" alt="Hillside Imports shop" class="w-full h-96 object-cover rounded-2xl shadow-2xl">
-      </div>
-      <div class="space-y-6">
-        <h2 class="font-heading text-4xl md:text-5xl font-black text-[var(--color-text)]">Honesty. Integrity. Value.</h2>
-        <p class="text-xl leading-relaxed">Hillside Imports has been Portland's trusted VW and Audi specialist since 1999. Founded by Rene and Krista Rodriguez, we're a family-owned shop where every customer becomes part of the family.</p>
-        <blockquote class="border-l-4 border-[var(--color-brand)] pl-6 italic text-lg bg-white p-6 rounded-r-xl">
-          "Our goal is to establish a long-term relationship with the customer. Its not about how much money people are going to give us today. Its about building relationships for tomorrow."
-          <cite class="not-italic font-semibold block mt-4">— Krista Rodriguez, Executive Director</cite>
-        </blockquote>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonials -->
-  <section class="bg-[var(--color-bg)] py-20 px-6">
-    <div class="container mx-auto text-center mb-16">
-      <h2 class="font-heading text-4xl md:text-5xl font-black text-[var(--color-text)] mb-6">What Our Customers Say</h2>
-    </div>
-    <div class="container mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl">
-      <div class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all">
-        <div class="stars mb-4 flex justify-center" aria-label="5 stars">★★★★★</div>
-        <p class="text-gray-700 mb-4 leading-relaxed">"I wanted to give a shout out to Krista and the Hillside Imports team. Even though they cannot service my car because of make and model, they did promptly respond to my inquiry and also went a step further to notify me of other repair shops in the area that I should consider. That is what I call customer service. Thank you for your time!"</p>
-        <p class="font-bold text-[var(--color-text)]">— Brian D.</p>
-      </div>
-      <div class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all">
-        <div class="stars mb-4 flex justify-center" aria-label="5 stars">★★★★★</div>
-        <p class="text-gray-700 mb-4 leading-relaxed">"We bought a used Passat for our son. Rene checked the car over for us, told us how it was and what work needed to be done, could be done, what to keep an eye on etc. We bought the car and Rene has taken it upon himself to help educate my kid about how to look after his car (who'd listen to a mere dad?) Great local mechanic. Trustworthy and friendly. Thanks Rene."</p>
-        <p class="font-bold text-[var(--color-text)]">— Jet S.</p>
-      </div>
-      <div class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all">
-        <div class="stars mb-4 flex justify-center" aria-label="5 stars">★★★★★</div>
-        <p class="text-gray-700 mb-4 leading-relaxed">"Love that I discovered this place. Rene, his wife and their crew are fantastic to work with and they are highly knowledgeable about Westy and Eurovan which I own a Eurovan 99. I live in Portland, so this shop is a bit out of the way but after trying Precission Motor Car and German Formula, I highly recommend Hillside Imports."</p>
-        <p class="font-bold text-[var(--color-text)]">— Miquel M.</p>
-      </div>
-      <div class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all">
-        <div class="stars mb-4 flex justify-center" aria-label="5 stars">★★★★★</div>
-        <p class="text-gray-700 mb-4 leading-relaxed">"I recently had a headlight restoration done on my car by Hillside Imports. I was hoping that the lights would be improved after the process but I was shocked at how great they looked when they were finished. The car is almost 10 years old and the lights look brand new again. Excellent work by Hillside Imports. I would highly recommend them if your car needs a little headlight refresh."</p>
-        <p class="font-bold text-[var(--color-text)]">— Tanner M.</p>
-      </div>
-      <div class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all">
-        <div class="stars mb-4 flex justify-center" aria-label="5 stars">★★★★★</div>
-        <p class="text-gray-700 mb-4 leading-relaxed">"These guys were awesome! Rene is extremely knowledgeable and helpful with determining whether a repair is necessary, and willing to help coordinate around both my work schedule and my budget. When there was an issue with a faulty manufacturer part, they were there to offer assistance and advice. They washed the car, and even gave me a gift bag with a nice bottle of wine when I picked my car up. Great work, great customer service, and reasonable prices... I couldn't have been happier with the entire experience."</p>
-        <p class="font-bold text-[var(--color-text)]">— Ryan H.</p>
-      </div>
-      <div class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all">
-        <div class="stars mb-4 flex justify-center" aria-label="5 stars">★★★★★</div>
-        <p class="text-gray-700 mb-4 leading-relaxed">"My significant other gets his car repairs done here. It's a family run business with a lot of heart. Other mechanics recognize the hillside plates and talk about how great René is. There's no competition. I wish they did other makes because everyone is so blown away by their service."</p>
-        <p class="font-bold text-[var(--color-text)]">— Stephanie C.</p>
-      </div>
-      <div class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all">
-        <div class="stars mb-4 flex justify-center" aria-label="5 stars">★★★★★</div>
-        <p class="text-gray-700 mb-4 leading-relaxed">"It's always hard to find a new mechanic but I knew I wanted to work with Hillside from the start. The first time I called about my car issue, rather than immediately starting the quote process they tried to walk me through how I might get the work done for free from the dealer! Down the line, getting interval service done here has been both cheaper and faster than quoted, their service and garage are both impeccable. What more do you want?"</p>
-        <p class="font-bold text-[var(--color-text)]">— Mitch R.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact CTA -->
-  <section class="bg-[#222] py-16 text-center text-white px-6">
-    <div class="container mx-auto max-w-2xl">
-      <h2 class="font-heading text-3xl md:text-4xl font-black mb-6">Repairs you can trust. Relationships that last.</h2>
-      <div class="flex flex-col md:flex-row gap-4 justify-center items-center mb-6 max-w-md mx-auto">
-        <a href="/contact" class="bg-[var(--color-brand)] text-white px-8 py-4 rounded-[var(--radius-btn)] font-semibold text-lg hover:bg-[#a23f00] transition-all w-full md:w-auto text-center">Schedule Service</a>
-      </div>
-      <p class="text-xl"><a href="tel:503-293-0146" class="hover:text-[var(--color-brand)]">Call 503-293-0146</a> | <a href="sms:503-758-1476" class="hover:text-[var(--color-brand)]">Text 503-758-1476</a></p>
-    </div>
-  </section>
-
-  <Footer />
-</Base>
-
-<style>
-  .marquee {
-    --gap: 2rem;
-  }
+  <main id="main-content">
+    <HeroRouter config={config} />
+    
+    {config.about && (
+      <About 
+        image={config.about.image}
+        heading={config.about.heading}
+        text={config.about.text}
+        reverse={config.about.reverse}
+      />
+    )}
+    
+    {config.testimonials && (
+      <TestimonialRouter config={config} />
+    )}
+    
+    {config.menu && (
+      <Menu sections={config.menu.sections} />
+    )}
+    
+    {config.gallery && (
+      <GalleryRouter config={config} />
+    )}
+    
+    {config.hours && (
+      <Hours 
+        schedule={config.hours.schedule}
+        address={config.hours.address}
+        phone={config.hours.phone}
+        mapUrl={config.hours.mapUrl}
+        businessName={config.name}
+      />
+    )}
+    
+    {config.cta && (
+      <CTARouter config={config} />
+    )}
+  </main>
   
-  .animate-marquee {
-    animation: marquee 20s linear infinite;
-  }
-  
-  @keyframes marquee {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-100%);
-    }
-  }
-  
-  .stars {
-    color: #ffc300;
-    font-size: 1.5rem;
-  }
-  
-  @media (max-width: 768px) {
-    .stars {
-      font-size: 1.25rem;
-    }
-  }
-</style>
+  <FooterRouter config={config} />
+</Layout>

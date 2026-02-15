@@ -1,0 +1,91 @@
+---
+interface GalleryImage {
+  src: string;
+  alt: string;
+}
+
+interface Props {
+  images: GalleryImage[];
+}
+
+const { images } = Astro.props;
+---
+
+<section class="bg-secondary text-white" id="gallery">
+  <div class="container">
+    <div class="text-center mb-12">
+      <h2 class="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+        Gallery
+      </h2>
+      <div class="w-20 h-1 bg-accent mx-auto"></div>
+    </div>
+    
+    <!-- Carousel with scroll-snap -->
+    <div class="relative">
+      <!-- Scroll container -->
+      <div 
+        class="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4"
+        style="scrollbar-width: none; -ms-overflow-style: none;"
+      >
+        {images.map((image, index) => (
+          <div class="flex-shrink-0 w-[85vw] sm:w-[60vw] md:w-[45vw] lg:w-[35vw] snap-center">
+            <div class="relative aspect-[4/3] overflow-hidden rounded-lg group">
+              <img 
+                src={image.src} 
+                alt={image.alt}
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-secondary/0 group-hover:bg-secondary/40 transition-colors duration-300 flex items-center justify-center">
+                <span class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm font-medium px-2 text-center">
+                  {image.alt}
+                </span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      <!-- Navigation dots -->
+      <div class="flex justify-center gap-2 mt-4">
+        {images.map((_, index) => (
+          <button
+            class="w-2 h-2 rounded-full bg-white/30 hover:bg-accent transition-colors dot-indicator"
+            aria-label={`Go to slide ${index + 1}`}
+            data-index={index}
+          />
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+
+<script>
+  // Update dot indicators based on scroll position
+  const container = document.querySelector('.overflow-x-auto');
+  const dots = document.querySelectorAll('.dot-indicator');
+  
+  if (container) {
+    container.addEventListener('scroll', () => {
+      const scrollLeft = container.scrollLeft;
+      const itemWidth = container.scrollWidth / dots.length;
+      const activeIndex = Math.round(scrollLeft / itemWidth);
+      
+      dots.forEach((dot, index) => {
+        if (index === activeIndex) {
+          dot.classList.add('bg-accent');
+          dot.classList.remove('bg-white/30');
+        } else {
+          dot.classList.remove('bg-accent');
+          dot.classList.add('bg-white/30');
+        }
+      });
+    });
+  }
+</script>
