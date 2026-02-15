@@ -1,0 +1,89 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Testimonials from '../components/Testimonials.astro';
+import Menu from '../components/Menu.astro';
+import Gallery from '../components/Gallery.astro';
+import Hours from '../components/Hours.astro';
+import CTA from '../components/CTA.astro';
+import Footer from '../components/Footer.astro';
+import { siteConfig } from '../config/site.config';
+
+const config = siteConfig;
+
+// Build navigation links from sections
+const navLinks = [
+  { text: 'About', url: '#about' },
+  { text: 'Menu', url: '#menu' },
+  { text: 'Gallery', url: '#gallery' },
+  { text: 'Hours', url: '#hours' }
+];
+---
+
+<Layout config={config}>
+  <Nav 
+    logo={config.name}
+    links={navLinks}
+    cta={config.hero.cta}
+  />
+  
+  <main id="main-content">
+    <Hero 
+      image={config.hero.image}
+      headline={config.hero.headline}
+      subtext={config.hero.subtext}
+      cta={config.hero.cta}
+    />
+    
+    {config.about && (
+      <About 
+        image={config.about.image}
+        heading={config.about.heading}
+        text={config.about.text}
+        reverse={config.about.reverse}
+      />
+    )}
+    
+    {config.testimonials && (
+      <Testimonials quotes={config.testimonials.quotes} />
+    )}
+    
+    {config.menu && (
+      <Menu sections={config.menu.sections} />
+    )}
+    
+    {config.gallery && (
+      <Gallery images={config.gallery.images} />
+    )}
+    
+    {config.hours && (
+      <Hours 
+        schedule={config.hours.schedule}
+        address={config.hours.address}
+        phone={config.hours.phone}
+        mapUrl={config.hours.mapUrl}
+        businessName={config.name}
+      />
+    )}
+    
+    {config.cta && (
+      <CTA 
+        heading={config.cta.heading}
+        text={config.cta.text}
+        buttonText={config.cta.buttonText}
+        buttonUrl={config.cta.buttonUrl}
+      />
+    )}
+  </main>
+  
+  <Footer 
+    name={config.name}
+    phone={config.hours?.phone || ''}
+    address={config.hours?.address || ''}
+    social={config.footer.social}
+    links={config.footer.links}
+    demoMode={config.demoMode}
+  />
+</Layout>

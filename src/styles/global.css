@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+/* Custom CSS variables for theming */
+:root {
+  --color-primary: #8B4513;
+  --color-secondary: #2C1810;
+  --color-accent: #D4A574;
+  --color-background: #FDF8F3;
+  --color-text: #2C1810;
+}
+
+/* Google Fonts import */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/playfairdisplay/v37/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKdFvXDXbtM.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/lora/v33/0oIIfP15Zpil4i05CqA.woff2) format('woff2');
+}
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Lora', serif;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+/* Headings use heading font */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Skip to content link for accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-primary);
+  color: white;
+  padding: 8px 16px;
+  z-index: 100;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Focus styles for accessibility */
+a:focus,
+button:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Container utility */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+
+/* Section spacing */
+section {
+  padding: 4rem 0;
+}
+
+@media (min-width: 768px) {
+  section {
+    padding: 6rem 0;
+  }
+}

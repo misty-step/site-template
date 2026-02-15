@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect fill="#2C1810" width="800" height="600"/>
+  <text fill="#FFFFFF" font-family="serif" font-size="32" x="50%" y="50%" text-anchor="middle" dominant-baseline="middle">Our Story</text>
+  <text fill="#D4A574" font-family="serif" font-size="18" x="50%" y="60%" text-anchor="middle">The Copper Kettle</text>
+</svg>
