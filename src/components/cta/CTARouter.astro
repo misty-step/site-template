@@ -11,6 +11,11 @@ interface Props {
 const { config } = Astro.props;
 const { cta, designGenome } = config;
 
+// Guard: render nothing if cta is not configured
+if (!cta) {
+  return;
+}
+
 // Default to 'banner' if not specified
 const ctaStyle = designGenome?.ctaStyle || 'banner';
 

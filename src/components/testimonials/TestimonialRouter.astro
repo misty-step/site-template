@@ -11,6 +11,11 @@ interface Props {
 const { config } = Astro.props;
 const { testimonials, designGenome } = config;
 
+// Guard: render nothing if testimonials is not configured
+if (!testimonials) {
+  return;
+}
+
 // Default to 'cards' if not specified
 const testimonialStyle = designGenome?.testimonialStyle || 'cards';
 

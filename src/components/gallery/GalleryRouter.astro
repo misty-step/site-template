@@ -12,6 +12,11 @@ interface Props {
 const { config } = Astro.props;
 const { gallery, designGenome } = config;
 
+// Guard: render nothing if gallery is not configured
+if (!gallery) {
+  return;
+}
+
 // Default to 'grid-3' if not specified
 const galleryStyle = designGenome?.galleryStyle || 'grid-3';
 
