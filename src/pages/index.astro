@@ -15,11 +15,11 @@ const config = siteConfig;
 
 // Build navigation links from sections
 const navLinks = [
-  { text: 'About', url: '#about' },
-  { text: 'Menu', url: '#menu' },
-  { text: 'Gallery', url: '#gallery' },
-  { text: 'Hours', url: '#hours' }
-];
+  config.about ? { text: config.about.label ?? 'About', url: '#about' } : null,
+  config.menu ? { text: config.menu.label ?? 'Menu', url: '#menu' } : null,
+  config.gallery ? { text: config.gallery.label ?? 'Gallery', url: '#gallery' } : null,
+  config.hours ? { text: config.hours.label ?? 'Hours', url: '#hours' } : null
+].filter((link): link is { text: string; url: string } => Boolean(link));
 ---
 
 <Layout config={config}>
@@ -47,19 +47,29 @@ const navLinks = [
     )}
     
     {config.testimonials && (
-      <Testimonials quotes={config.testimonials.quotes} />
+      <Testimonials
+        quotes={config.testimonials.quotes}
+        label={config.testimonials.label}
+      />
     )}
     
     {config.menu && (
-      <Menu sections={config.menu.sections} />
+      <Menu
+        sections={config.menu.sections}
+        label={config.menu.label}
+      />
     )}
     
     {config.gallery && (
-      <Gallery images={config.gallery.images} />
+      <Gallery
+        images={config.gallery.images}
+        label={config.gallery.label}
+      />
     )}
     
     {config.hours && (
       <Hours 
+        label={config.hours.label}
         schedule={config.hours.schedule}
         address={config.hours.address}
         phone={config.hours.phone}

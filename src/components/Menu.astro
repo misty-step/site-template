@@ -7,21 +7,23 @@ interface MenuItem {
 
 interface MenuSection {
   name: string;
+  label?: string;
   items: MenuItem[];
 }
 
 interface Props {
   sections: MenuSection[];
+  label?: string;
 }
 
-const { sections } = Astro.props;
+const { sections, label } = Astro.props;
 ---
 
 <section class="bg-background" id="menu">
   <div class="container">
     <div class="text-center mb-12">
       <h2 class="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4">
-        Our Menu
+        {label ?? 'Our Menu'}
       </h2>
       <div class="w-20 h-1 bg-accent mx-auto"></div>
     </div>
@@ -30,7 +32,7 @@ const { sections } = Astro.props;
       {sections.map((section) => (
         <div>
           <h3 class="font-heading text-2xl md:text-3xl font-bold text-secondary mb-6 pb-2 border-b-2 border-accent">
-            {section.name}
+            {section.label ?? section.name}
           </h3>
           <ul class="space-y-4">
             {section.items.map((item) => (

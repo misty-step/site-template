@@ -6,16 +6,17 @@ interface GalleryImage {
 
 interface Props {
   images: GalleryImage[];
+  label?: string;
 }
 
-const { images } = Astro.props;
+const { images, label } = Astro.props;
 ---
 
 <section class="bg-secondary text-white" id="gallery">
   <div class="container">
     <div class="text-center mb-12">
       <h2 class="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-        Gallery
+        {label ?? 'Gallery'}
       </h2>
       <div class="w-20 h-1 bg-accent mx-auto"></div>
     </div>

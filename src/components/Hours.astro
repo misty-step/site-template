@@ -1,5 +1,6 @@
 ---
 interface Props {
+  label?: string;
   schedule: Record<string, string>;
   address: string;
   phone: string;
@@ -7,7 +8,7 @@ interface Props {
   businessName: string;
 }
 
-const { schedule, address, phone, mapUrl, businessName } = Astro.props;
+const { label, schedule, address, phone, mapUrl, businessName } = Astro.props;
 
 // Convert schedule to JSON-LD format
 const openHours = Object.entries(schedule)
@@ -32,7 +33,7 @@ const openHours = Object.entries(schedule)
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Restaurant",
+  "@type": "LocalBusiness",
   "name": businessName,
   "address": {
     "@type": "PostalAddress",
@@ -47,7 +48,7 @@ const jsonLd = {
   <div class="container">
     <div class="text-center mb-12">
       <h2 class="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4">
-        Hours & Location
+        {label ?? 'Hours & Location'}
       </h2>
       <div class="w-20 h-1 bg-accent mx-auto"></div>
     </div>

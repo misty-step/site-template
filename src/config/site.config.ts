@@ -35,12 +35,14 @@ export interface SiteConfig {
     cta?: { text: string; url: string } 
   };
   about?: { 
+    label?: string;
     image: string; 
     heading: string; 
     text: string; 
     reverse?: boolean 
   };
   testimonials?: { 
+    label?: string;
     quotes: Array<{ 
       text: string; 
       author: string; 
@@ -48,8 +50,10 @@ export interface SiteConfig {
     }> 
   };
   menu?: { 
+    label?: string;
     sections: Array<{ 
       name: string; 
+      label?: string;
       items: Array<{ 
         name: string; 
         description?: string; 
@@ -58,12 +62,14 @@ export interface SiteConfig {
     }> 
   };
   gallery?: { 
+    label?: string;
     images: Array<{ 
       src: string; 
       alt: string 
     }> 
   };
   hours?: { 
+    label?: string;
     schedule: Record<string, string>; 
     address: string; 
     phone: string; 
@@ -86,141 +92,137 @@ export interface SiteConfig {
   demoMode: boolean; // shows "Demo redesign by Misty Step" footer badge
 }
 
-// Example: The Copper Kettle - A Nashville Restaurant
+// Example: Summit Works - Generic local business placeholder
 export const siteConfig: SiteConfig = {
-  name: "The Copper Kettle",
-  tagline: "Southern Comfort, Reimagined",
-  description: "Experience farm-to-table Southern cuisine in the heart of Nashville. Fresh ingredients, bold flavors, and warm hospitality await.",
-  url: "https://thecopperkettle.com",
+  name: "Summit Works",
+  tagline: "Reliable service for modern local businesses",
+  description: "Summit Works helps organizations improve operations, strengthen customer experience, and scale with confidence.",
+  url: "https://example.com",
   
   colors: {
-    primary: "#8B4513",      // Saddle Brown
-    secondary: "#2C1810",   // Dark Brown
-    accent: "#D4A574",       // Warm Tan
-    background: "#FDF8F3",  // Warm White
-    text: "#2C1810",        // Dark Brown
+    primary: "#1F4E5F",
+    secondary: "#163744",
+    accent: "#F2B84B",
+    background: "#F7FAFC",
+    text: "#1E293B",
   },
   
   fonts: {
-    heading: "Playfair Display",
-    body: "Lora",
+    heading: "Poppins",
+    body: "Inter",
   },
   
   hero: {
     image: "/images/hero.jpg",
-    headline: "Welcome to The Copper Kettle",
-    subtext: "Where Southern tradition meets culinary innovation in the heart of Nashville",
+    headline: "Build a stronger business foundation",
+    subtext: "Practical support for teams that want better systems, happier clients, and steady growth.",
     cta: {
-      text: "View Menu",
+      text: "View Services",
       url: "#menu"
     }
   },
   
   about: {
+    label: "About",
     image: "/images/about.jpg",
-    heading: "Our Story",
-    text: "Founded in 2015, The Copper Kettle brings together the rich traditions of Southern cooking with modern culinary techniques. Our chefs source ingredients from local farms to create dishes that honor our heritage while pushing the boundaries of flavor. Every meal is a celebration of community, crafted with love and served with warmth.",
+    heading: "Who We Are",
+    text: "Summit Works partners with local businesses to simplify operations and improve client outcomes. We combine strategy, hands-on implementation, and ongoing support so teams can focus on what they do best.",
     reverse: false
   },
   
   testimonials: {
+    label: "Testimonials",
     quotes: [
       {
-        text: "The best fried chicken I've ever had. Perfectly crispy, incredibly flavorful. This is Nashville comfort food at its finest.",
-        author: "James Mitchell",
-        source: "Nashville Food Journal"
+        text: "We finally have a process our team can follow. Delivery is faster and clients notice the difference.",
+        author: "Jordan Blake",
+        source: "Operations Lead"
       },
       {
-        text: "A true gem in Music City. The Copper Kettle has become our go-to for special occasions. The hospitality is unmatched.",
-        author: "Sarah & David Thompson",
-        source: "Local Residents"
+        text: "Clear communication, smart planning, and no fluff. They helped us fix what was slowing us down.",
+        author: "Priya Patel",
+        source: "Business Owner"
       },
       {
-        text: "I've traveled all over the South for food, and this place stands out. The attention to detail in every dish is remarkable.",
-        author: "Chef Marcus Williams",
-        source: "James Beard Nominee"
+        text: "The engagement paid for itself in months. We now run with more confidence and less guesswork.",
+        author: "Marcus Nguyen",
+        source: "General Manager"
       }
     ]
   },
   
   menu: {
+    label: "Services",
     sections: [
       {
-        name: "Starters",
+        name: "Core Services",
         items: [
-          { name: "Fried Green Tomatoes", description: "Crispy green tomatoes with comeback sauce", price: "$12" },
-          { name: "Biscuits & Gravy", description: "House-made biscuits with sausage gravy", price: "$10" },
-          { name: "Smoked Wings", description: "Dry-rubbed wings with blue cheese dip", price: "$14" }
+          { name: "Business Assessment", description: "Current-state review with priority roadmap", price: "From $750" },
+          { name: "Workflow Design", description: "Define and document clear team processes", price: "From $1,200" },
+          { name: "Service Playbooks", description: "Reusable operating guides for consistent delivery", price: "From $900" }
         ]
       },
       {
-        name: "Mains",
+        name: "Implementation",
         items: [
-          { name: "Southern Fried Chicken", description: "12-hour brined, double-fried, honey glaze", price: "$24" },
-          { name: "Catfish & Hushpuppies", description: "Crispy cornmeal-crusted catfish", price: "$22" },
-          { name: "Smoked Brisket", description: "14-hour oak-smoked prime brisket", price: "$28" },
-          { name: "Shrimp & Grits", description: "Garlic shrimp over cheesy grits", price: "$26" }
+          { name: "Systems Setup", description: "Configure tooling and automations around your workflow", price: "From $1,500" },
+          { name: "Team Enablement", description: "Training sessions with role-specific playbooks", price: "From $600" },
+          { name: "Launch Support", description: "Guided rollout with metrics and checkpoint reviews", price: "From $800" }
         ]
       },
       {
-        name: "Sides",
+        name: "Ongoing Support",
         items: [
-          { name: "Collard Greens", description: "Slow-cooked with ham hock", price: "$7" },
-          { name: "Mac & Cheese", description: "Three-cheese blend, breadcrumb topping", price: "$8" },
-          { name: "Sweet Potato Mash", description: "Brown sugar marshmallow crust", price: "$7" }
-        ]
-      },
-      {
-        name: "Desserts",
-        items: [
-          { name: "Peach Cobbler", description: "House-made with vanilla ice cream", price: "$9" },
-          { name: "Banana Pudding", description: "Layered vanilla wafer pudding", price: "$8" },
-          { name: "Chocolate Pecan Pie", description: "With bourbon whipped cream", price: "$9" }
+          { name: "Monthly Advisory", description: "Strategy check-ins and issue triage", price: "$450/mo" },
+          { name: "Performance Reviews", description: "Quarterly reporting and optimization plan", price: "$350" },
+          { name: "Priority Support", description: "Fast-turn guidance for urgent operational blockers", price: "Custom" }
         ]
       }
     ]
   },
   
   gallery: {
+    label: "Gallery",
     images: [
-      { src: "/images/gallery-1.jpg", alt: "Restaurant interior with rustic wooden tables" },
-      { src: "/images/gallery-2.jpg", alt: "Plated fried chicken with sides" },
-      { src: "/images/gallery-3.jpg", alt: "Chef preparing food in the kitchen" },
-      { src: "/images/gallery-4.jpg", alt: "Outdoor patio seating area" },
-      { src: "/images/gallery-5.jpg", alt: "Smoked brisket on a cutting board" },
-      { src: "/images/gallery-6.jpg", alt: "Dessert platter with cobbler and pie" },
-      { src: "/images/gallery-7.jpg", alt: "Craft cocktails at the bar" },
-      { src: "/images/gallery-8.jpg", alt: "Happy customers at dinner" }
+      { src: "/images/gallery-1.jpg", alt: "Team planning session in a meeting space" },
+      { src: "/images/gallery-2.jpg", alt: "Workspace setup with project materials" },
+      { src: "/images/gallery-3.jpg", alt: "Consultant reviewing workflow documentation" },
+      { src: "/images/gallery-4.jpg", alt: "Client workshop with whiteboard planning" },
+      { src: "/images/gallery-5.jpg", alt: "Project dashboard on laptop screen" },
+      { src: "/images/gallery-6.jpg", alt: "Team collaboration during implementation" },
+      { src: "/images/gallery-7.jpg", alt: "One-on-one advisory session" },
+      { src: "/images/gallery-8.jpg", alt: "Completed workspace process board" }
     ]
   },
   
   hours: {
+    label: "Hours",
     schedule: {
-      "Monday": "Closed",
-      "Tuesday": "11:00 AM - 9:00 PM",
-      "Wednesday": "11:00 AM - 9:00 PM",
-      "Thursday": "11:00 AM - 10:00 PM",
-      "Friday": "11:00 AM - 10:00 PM",
-      "Saturday": "10:00 AM - 10:00 PM",
-      "Sunday": "10:00 AM - 8:00 PM"
+      "Monday": "9:00 AM - 6:00 PM",
+      "Tuesday": "9:00 AM - 6:00 PM",
+      "Wednesday": "9:00 AM - 6:00 PM",
+      "Thursday": "9:00 AM - 6:00 PM",
+      "Friday": "9:00 AM - 5:00 PM",
+      "Saturday": "By Appointment",
+      "Sunday": "Closed"
     },
-    address: "123 Broadway, Nashville, TN 37201",
+    address: "123 Main Street, Suite 200, Hometown, ST 12345",
     phone: "(615) 555-0123",
-    mapUrl: "https://maps.google.com/?q=123+Broadway+Nashville+TN"
+    mapUrl: "https://maps.google.com/?q=123+Main+Street+Hometown"
   },
   
   cta: {
-    heading: "Reserve Your Table",
-    text: "Join us for an unforgettable dining experience. Reservations recommended for weekend visits.",
-    buttonText: "Book Now",
-    buttonUrl: "https://opentable.com"
+    heading: "Ready to improve how your business runs?",
+    text: "Book a short intro call and we will map the fastest path to better operations.",
+    buttonText: "Schedule a Call",
+    buttonUrl: "https://example.com/contact"
   },
   
   footer: {
     social: [
-      { platform: "facebook", url: "https://facebook.com/thecopperkettle" },
-      { platform: "instagram", url: "https://instagram.com/thecopperkettle" },
-      { platform: "twitter", url: "https://twitter.com/thecopperkettle" }
+      { platform: "facebook", url: "https://facebook.com/summitworks" },
+      { platform: "instagram", url: "https://instagram.com/summitworks" },
+      { platform: "twitter", url: "https://twitter.com/summitworks" }
     ],
     links: [
       { text: "Privacy Policy", url: "/privacy" },
