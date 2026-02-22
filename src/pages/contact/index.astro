@@ -1,0 +1,78 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Base title="Contact Us – Hillside Imports" googleFontsQuery="family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" demoMode={true}>
+
+  <Nav />
+
+  <!-- Hero -->
+  <section class="bg-[#222] min-h-screen flex items-center justify-center text-white py-20 px-6">
+    <div class="text-center max-w-4xl mx-auto">
+      <h1 class="font-heading text-5xl md:text-7xl font-black mb-8">Contact Us</h1>
+      <p class="text-2xl md:text-3xl font-semibold mb-12 leading-relaxed">Repairs you can trust. Relationships that last.</p>
+    </div>
+  </section>
+
+  <!-- Info Grid -->
+  <section class="py-20 px-6 bg-[var(--color-bg)]">
+    <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 max-w-5xl">
+      <div class="text-center">
+        <div class="text-4xl mb-6">📞</div>
+        <h3 class="font-heading text-2xl font-bold mb-4 text-[var(--color-text)]">Call or Text</h3>
+        <p class="text-xl mb-4"><a href="tel:503-293-0146" class="font-bold hover:text-[var(--color-brand)] block">503-293-0146 (call)</a></p>
+        <p class="text-xl"><a href="sms:503-758-1476" class="font-bold hover:text-[var(--color-brand)] block">503-758-1476 (text)</a></p>
+        <p class="text-xl mt-6"><a href="mailto:info@hillsideimports.com" class="hover:text-[var(--color-brand)]">✉️ info@hillsideimports.com</a></p>
+      </div>
+      <div class="text-center">
+        <div class="text-4xl mb-6">📍</div>
+        <h3 class="font-heading text-2xl font-bold mb-4 text-[var(--color-text)]">Location</h3>
+        <p class="text-xl font-semibold">4402 SW Beaverton Hillsdale Hwy<br>Portland, OR 97221</p>
+      </div>
+      <div class="text-center">
+        <div class="text-4xl mb-6">⏰</div>
+        <h3 class="font-heading text-2xl font-bold mb-4 text-[var(--color-text)]">Hours</h3>
+        <p class="text-xl">Mon–Fri: 8:00 am – 5:00 pm<br>Sat–Sun: Closed</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Parking Instructions -->
+  <section class="py-16 px-6 bg-[var(--color-bg-alt)]">
+    <div class="container mx-auto max-w-3xl">
+      <div class="bg-gradient-to-r from-[var(--color-brand)] to-orange-600 text-white p-8 rounded-2xl shadow-2xl border-l-8 border-white relative" style="border-left-color: white;">
+        <h3 class="font-heading text-2xl font-bold mb-4">Finding us:</h3>
+        <p class="text-lg leading-relaxed">**Turn right into the parking lot and park under the Hillside Imports sign, opposite Working Class Acupuncture. Orange cones mark our spots. Walk up the driveway to the main office on the second level.**</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Google Maps -->
+  <section class="py-20 px-6 bg-[var(--color-bg)]">
+    <div class="container mx-auto max-w-6xl">
+      <iframe 
+        src="https://maps.google.com/maps?q=4402+SW+Beaverton+Hillsdale+Hwy+Portland+OR+97221&output=embed" 
+        width="100%" 
+        height="400" 
+        style="border:0; border-radius: 1rem; box-shadow: 0 20px 40px rgba(0,0,0,0.1);" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-[#222] py-16 text-center text-white px-6">
+    <div class="container mx-auto max-w-md">
+      <div class="flex flex-col md:flex-row gap-4 justify-center">
+        <a href="tel:503-293-0146" class="bg-[var(--color-brand)] text-white px-10 py-5 rounded-[var(--radius-btn)] font-semibold text-xl hover:bg-[#a23f00] transition-all w-full md:w-auto text-center">Call 503-293-0146</a>
+        <a href="sms:503-758-1476" class="border-2 border-white text-white px-10 py-5 rounded-[var(--radius-btn)] font-semibold text-xl hover:bg-white hover:text-black transition-all w-full md:w-auto text-center">Text 503-758-1476</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+
+</Base>

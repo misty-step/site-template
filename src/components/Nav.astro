@@ -1,0 +1,49 @@
+---
+// Nav.astro
+const currentPath = Astro.url.pathname;
+---
+
+<nav class="bg-[var(--color-nav)] text-white px-6 lg:px-8 py-4 sticky top-0 z-50">
+  <div class="container mx-auto flex items-center justify-between">
+    <!-- Logo -->
+    <a href="/" class="flex-shrink-0">
+      <img src="/logo.png" alt="Hillside Imports" width="150" class="h-10 lg:h-12">
+    </a>
+
+    <!-- Desktop Menu -->
+    <div class="hidden md:flex items-center space-x-6 lg:space-x-8">
+      <a href="/" class={currentPath === '/' ? 'font-semibold' : ''}>Home</a>
+      <a href="/services" class={currentPath === '/services' ? 'font-semibold' : ''}>Services</a>
+      <a href="/faq" class={currentPath === '/faq' ? 'font-semibold' : ''}>FAQ</a>
+      <a href="/contact" class={currentPath === '/contact' ? 'font-semibold' : ''}>Contact</a>
+      <a href="/contact" class="bg-[var(--color-brand)] text-white px-6 py-2 rounded-[var(--radius-btn)] font-semibold hover:bg-[#a23f00] transition-colors">Schedule Service</a>
+    </div>
+
+    <!-- Mobile Toggle -->
+    <label for="nav-toggle" class="md:hidden cursor-pointer">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </label>
+    <input type="checkbox" id="nav-toggle" class="hidden peer">
+
+    <!-- Mobile Menu -->
+    <div class="md:hidden peer-checked:block absolute top-full left-0 w-full bg-[var(--color-nav)] py-4 shadow-lg hidden peer-checked:flex flex-col items-center space-y-4 peer-checked:flex">
+      <a href="/" class={currentPath === '/' ? 'font-semibold' : ''}>Home</a>
+      <a href="/services" class={currentPath === '/services' ? 'font-semibold' : ''}>Services</a>
+      <a href="/faq" class={currentPath === '/faq' ? 'font-semibold' : ''}>FAQ</a>
+      <a href="/contact" class={currentPath === '/contact' ? 'font-semibold' : ''}>Contact</a>
+      <a href="/contact" class="bg-[var(--color-brand)] text-white px-6 py-2 rounded-[var(--radius-btn)] font-semibold w-full text-center hover:bg-[#a23f00] transition-colors">Schedule Service</a>
+    </div>
+  </div>
+</nav>
+
+<style>
+  /* Mobile menu positioning */
+  #nav-toggle ~ div {
+    display: none;
+  }
+  #nav-toggle:checked ~ div {
+    display: flex;
+  }
+</style>

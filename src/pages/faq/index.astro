@@ -1,0 +1,181 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Base title="FAQ – Hillside Imports" googleFontsQuery="family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" demoMode={true}>
+
+  <Nav />
+
+  <section class="py-20 px-6 bg-[var(--color-bg)]">
+    <div class="container mx-auto max-w-4xl">
+      <div class="text-center mb-20">
+        <h1 class="font-heading text-4xl md:text-5xl font-black text-[var(--color-text)] mb-6">Frequently Asked Questions</h1>
+        <p class="text-xl leading-relaxed">Everything you need to know before visiting Hillside Imports</p>
+      </div>
+
+      <!-- General -->
+      <div class="mb-12">
+        <h2 class="font-heading text-3xl font-bold mb-8 border-b-2 border-[var(--color-brand)] pb-4">General</h2>
+        <div class="space-y-4">
+          <details class="faq-item">
+            <summary>What types of services does Hillside Imports offer?</summary>
+            <p class="mt-4 p-6 bg-white rounded-xl shadow-sm">Hillside Imports specializes in comprehensive services for Audi and Volkswagen vehicles, including routine maintenance, diagnostics, repairs, and performance tuning. Our highly trained technicians are equipped to handle everything from oil changes and brake replacements to advanced engine repairs.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Do you use OEM parts?</summary>
+            <p class="mt-4 p-6 bg-white rounded-xl shadow-sm">Yes, we prioritize OEM parts or high-quality aftermarket options that meet or exceed OEM standards, ensuring your Audi or VW maintains peak performance and longevity.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Are your technicians certified?</summary>
+            <p class="mt-4 p-6 bg-white rounded-xl shadow-sm">While we are not a dealership, we specialize exclusively in Audi and Volkswagen vehicles. Our technicians are highly qualified and well-trained in these brands. Please note: we cannot perform VW or Audi warranty repairs.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Is there a warranty on services?</summary>
+            <p class="mt-4 p-6 bg-white rounded-xl shadow-sm">Yes, we stand behind our work with a warranty on both parts and labor. Warranty details vary by service — ask our team for specifics when you schedule.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Where should I park when I arrive?</summary>
+            <p class="mt-4 p-6 bg-white rounded-xl shadow-sm">When you enter the parking lot, turn immediately to the right and park under the big Hillside Imports sign, opposite Working Class Acupuncture. Orange cones mark our spots. Walk up the driveway to the main office on the second level to check in.</p>
+          </details>
+        </div>
+      </div>
+
+      <!-- Maintenance -->
+      <div class="mb-12">
+        <h2 class="font-heading text-3xl font-bold mb-8 border-b-2 border-[var(--color-brand)] pb-4">Maintenance</h2>
+        <div class="space-y-4">
+          <details class="faq-item">
+            <summary>How often should I service my Audi or VW?</summary>
+            <p class="mt-4 p-6 bg-white rounded-xl shadow-sm">Every 5,000 miles or 12 months, whichever comes first — though this varies by model and driving habits. Our team can advise based on your specific vehicle.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Can you service my car while it's still under warranty?</summary>
+            <p class="mt-4 p-6 bg-white rounded-xl shadow-sm">Yes, we can perform scheduled maintenance that meets factory requirements using OEM parts, keeping your warranty valid.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Why does my check engine light keep coming on?</summary>
+            <p class="mt-4 p-6 bg-white rounded-xl shadow-sm">Reasons range from a loose gas cap to sensor, exhaust, or ignition issues. Our diagnostic equipment is tailored for Audi and VW models so we can pinpoint the problem accurately.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Can I drive with the check engine light on?</summary>
+            <p class="mt-4 p-6 bg-white rounded-xl shadow-sm">If it's solid, you can usually continue driving until we get you in. If it's flashing, stop as soon as it's safe and have the car towed — a flashing light signals a potentially serious problem.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Why is my oil level light on?</summary>
+            <p class="mt-4 p-6 bg-white rounded-xl shadow-sm">Some Audi and VW engines consume oil faster than expected. Check monthly and top off as needed. If you're adding a lot of oil regularly, you may have a leak — call us to schedule an inspection.</p>
+          </details>
+        </div>
+      </div>
+
+      <!-- Performance -->
+      <div class="mb-12">
+        <h2 class="font-heading text-3xl font-bold mb-8 border-b-2 border-[var(--color-brand)] pb-4">Performance</h2>
+        <div class="space-y-4">
+          <details class="faq-item">
+            <summary>Do you offer performance upgrades?</summary>
+            <p class="mt-4 p-6 bg-white rounded-xl shadow-sm">Yes — ECU tuning, exhaust upgrades, suspension modifications, and more.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What are the benefits of ECU tuning?</summary>
+            <p class="mt-4 p-6 bg-white rounded-xl shadow-sm">ECU tuning optimizes your engine management software for improved power, torque, and fuel efficiency. It's one of the most cost-effective upgrades for modern VW and Audi platforms.</p>
+          </details>
+        </div>
+      </div>
+
+      <!-- Specialty -->
+      <div class="mb-12">
+        <h2 class="font-heading text-3xl font-bold mb-8 border-b-2 border-[var(--color-brand)] pb-4">Specialty</h2>
+        <div class="space-y-4">
+          <details class="faq-item">
+            <summary>Can you fix transmission issues?</summary>
+            <p class="mt-4 p-6 bg-white rounded-xl shadow-sm">Yes, we diagnose and repair DSG, manual, and automatic transmissions for Audi and VW.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Do you service TDI diesel engines?</summary>
+            <p class="mt-4 p-6 bg-white rounded-xl shadow-sm">Yes — maintenance, repairs, and emissions solutions for TDI (Turbocharged Direct Injection) diesel engines.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Do you do timing belt replacement?</summary>
+            <p class="mt-4 p-6 bg-white rounded-xl shadow-sm">Yes. Follow manufacturer intervals — timing belt failure causes serious engine damage.</p>
+          </details>
+        </div>
+      </div>
+
+      <!-- Customer Service -->
+      <div class="mb-12">
+        <h2 class="font-heading text-3xl font-bold mb-8 border-b-2 border-[var(--color-brand)] pb-4">Customer Service</h2>
+        <div class="space-y-4">
+          <details class="faq-item">
+            <summary>Do you offer loaner vehicles or shuttle service?</summary>
+            <p class="mt-4 p-6 bg-white rounded-xl shadow-sm">Unfortunately we are not able to offer loaner vehicles or shuttle services.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How do I schedule an appointment?</summary>
+            <p class="mt-4 p-6 bg-white rounded-xl shadow-sm">Call 503-293-0146 or text 503-758-1476, Mon–Fri 8:00 am–5:00 pm. You can also email info@hillsideimports.com.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Do you offer emergency repair services?</summary>
+            <p class="mt-4 p-6 bg-white rounded-xl shadow-sm">Call us and we'll do our best to help quickly. After hours or weekends: text 503-758-1476.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What payment methods do you accept?</summary>
+            <p class="mt-4 p-6 bg-white rounded-xl shadow-sm">Visa, Mastercard, and American Express.</p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+
+</Base>
+
+<style>
+  details {
+    cursor: pointer;
+  }
+  
+  summary {
+    font-weight: 600;
+    padding: 1.5rem;
+    border: 2px solid transparent;
+    border-radius: var(--radius-btn);
+    transition: all 0.3s ease;
+    list-style: none;
+  }
+  
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  
+  summary::before {
+    content: '➕';
+    float: right;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+  }
+  
+  details[open] summary::before {
+    content: '➖';
+    transform: rotate(180deg);
+  }
+  
+  details[open] summary {
+    border-left: 4px solid var(--color-brand);
+    background: linear-gradient(90deg, var(--color-brand), transparent);
+    color: white;
+  }
+  
+  .faq-item {
+    background: #f8fafc;
+    border-radius: var(--radius-btn);
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .faq-item:hover {
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  }
+</style>
