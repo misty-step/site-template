@@ -18,3 +18,127 @@ body {
   color: var(--color-text);
   line-height: 1.5;
 }
+
+/* Genome-driven Section spacing */
+.section-tight {
+  padding-block: 2rem;
+}
+.section-normal {
+  padding-block: 4rem;
+}
+.section-airy {
+  padding-block: 6rem;
+}
+.section-dramatic {
+  padding-block: 8rem;
+}
+
+/* Content width */
+.width-narrow {
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.width-standard {
+  max-width: 64rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.width-wide {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.width-full {
+  max-width: 100%;
+}
+
+/* Border radius */
+.radius-none {
+  border-radius: 0;
+}
+.radius-subtle {
+  border-radius: 0.25rem;
+}
+.radius-rounded {
+  border-radius: 0.75rem;
+}
+.radius-pill {
+  border-radius: 9999px;
+}
+
+/* Shadows */
+.shadow-none {
+  box-shadow: none;
+}
+.shadow-subtle {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+.shadow-medium {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+.shadow-dramatic {
+  box-shadow: 0 8px 30px rgba(0,0,0,0.18);
+}
+.shadow-large {
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+/* Image treatments */
+.img-raw {
+}
+.img-rounded {
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+.img-masked {
+  clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%);
+}
+.img-overlay {
+  position: relative;
+}
+.img-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.5));
+  pointer-events: none;
+}
+
+/* Animation utilities */
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out forwards;
+}
+.animate-slide-down {
+  animation: slideDown 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from { 
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

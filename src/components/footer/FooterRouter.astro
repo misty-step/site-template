@@ -1,0 +1,37 @@
+---
+import type { SiteConfig } from '../../config/site.config';
+import FooterMinimal from './FooterMinimal.astro';
+import FooterFull from './FooterFull.astro';
+import FooterMega from './FooterMega.astro';
+
+interface Props {
+  config: SiteConfig;
+}
+
+const { config } = Astro.props;
+const { footer, hours, designGenome } = config;
+
+// Default to 'full' if not specified
+const footerStyle = designGenome?.footerStyle || 'full';
+
+const props = {
+  name: config.name,
+  phone: hours?.phone || '',
+  address: hours?.address || '',
+  social: footer.social,
+  links: footer.links,
+  demoMode: config.demoMode
+};
+---
+
+{footerStyle === 'minimal' && (
+  <FooterMinimal {...props} />
+)}
+
+{footerStyle === 'full' && (
+  <FooterFull {...props} />
+)}
+
+{footerStyle === 'mega' && (
+  <FooterMega {...props} />
+)}

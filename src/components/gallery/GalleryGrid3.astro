@@ -1,0 +1,41 @@
+---
+interface GalleryImage {
+  src: string;
+  alt: string;
+}
+
+interface Props {
+  images: GalleryImage[];
+}
+
+const { images } = Astro.props;
+---
+
+<section class="bg-secondary text-white" id="gallery">
+  <div class="container">
+    <div class="text-center mb-12">
+      <h2 class="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+        Gallery
+      </h2>
+      <div class="w-20 h-1 bg-accent mx-auto"></div>
+    </div>
+    
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      {images.map((image, index) => (
+        <div class="relative overflow-hidden rounded-lg aspect-square group">
+          <img 
+            src={image.src} 
+            alt={image.alt}
+            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-secondary/0 group-hover:bg-secondary/40 transition-colors duration-300 flex items-center justify-center">
+            <span class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm font-medium px-2 text-center">
+              {image.alt}
+            </span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

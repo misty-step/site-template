@@ -1,0 +1,58 @@
+---
+interface Props {
+  heading: string;
+  text: string;
+  buttonText: string;
+  buttonUrl: string;
+}
+
+const { heading, text, buttonText, buttonUrl } = Astro.props;
+---
+
+<!-- Floating CTA bar that appears on scroll -->
+<div class="fixed bottom-0 left-0 right-0 z-40 bg-primary text-white py-3 shadow-large transform translate-y-full transition-transform duration-300" id="floating-cta">
+  <div class="container flex items-center justify-between gap-4">
+    <div class="hidden sm:block">
+      <p class="font-heading font-bold text-lg">{heading}</p>
+      <p class="text-white/80 text-sm">{text}</p>
+    </div>
+    <div class="flex items-center gap-4 w-full sm:w-auto justify-between sm:justify-end">
+      <p class="sm:hidden font-medium">{heading}</p>
+      <a 
+        href={buttonUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center bg-white text-primary px-6 py-2 rounded-md font-bold hover:bg-accent hover:text-secondary transition-colors whitespace-nowrap"
+      >
+        {buttonText}
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  const floatingCta = document.getElementById('floating-cta');
+  let hasScrolled = false;
+  
+  function handleScroll() {
+    const scrolled = window.scrollY;
+    const threshold = 300; // Show after scrolling 300px
+    
+    if (scrolled > threshold && !hasScrolled) {
+      hasScrolled = true;
+      floatingCta?.classList.remove('translate-y-full');
+      // Add padding to body to account for floating CTA
+      document.body.style.paddingBottom = '60px';
+    } else if (scrolled <= threshold && hasScrolled) {
+      hasScrolled = false;
+      floatingCta?.classList.add('translate-y-full');
+      document.body.style.paddingBottom = '';
+    }
+  }
+  
+  // Use passive listener for better scroll performance
+  window.addEventListener('scroll', handleScroll, { passive: true });
+</script>

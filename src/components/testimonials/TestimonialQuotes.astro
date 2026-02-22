@@ -1,0 +1,48 @@
+---
+interface Quote {
+  text: string;
+  author: string;
+  source?: string;
+}
+
+interface Props {
+  quotes: Quote[];
+}
+
+const { quotes } = Astro.props;
+---
+
+<section class="bg-secondary text-white" id="testimonials">
+  <div class="container">
+    <div class="text-center mb-16">
+      <h2 class="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+        What Our Guests Say
+      </h2>
+      <div class="w-20 h-1 bg-accent mx-auto"></div>
+    </div>
+    
+    <div class="max-w-4xl mx-auto space-y-12">
+      {quotes.map((quote, index) => (
+        <article class="text-center">
+          <blockquote class="relative">
+            <!-- Decorative quote mark -->
+            <span class="absolute -top-8 left-1/2 -translate-x-1/2 font-heading text-8xl text-accent/20" aria-hidden="true">
+              "
+            </span>
+            <p class="text-xl md:text-2xl lg:text-3xl italic text-white/90 leading-relaxed relative z-10">
+              {quote.text}
+            </p>
+          </blockquote>
+          <footer class="mt-6">
+            <cite class="not-italic">
+              <span class="font-bold text-accent text-lg block">{quote.author}</span>
+              {quote.source && (
+                <span class="text-white/60 text-base">{quote.source}</span>
+              )}
+            </cite>
+          </footer>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

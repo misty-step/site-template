@@ -1,0 +1,54 @@
+---
+import type { SiteConfig } from '../../config/site.config';
+import HeroFullbleed from './HeroFullbleed.astro';
+import HeroSplit from './HeroSplit.astro';
+import HeroMinimal from './HeroMinimal.astro';
+import HeroVideoBg from './HeroVideoBg.astro';
+
+interface Props {
+  config: SiteConfig;
+}
+
+const { config } = Astro.props;
+const { hero, designGenome } = config;
+
+// Default to 'fullbleed' if not specified
+const heroStyle = designGenome?.heroStyle || 'fullbleed';
+
+const { image, headline, subtext, cta } = hero;
+---
+
+{heroStyle === 'fullbleed' && (
+  <HeroFullbleed 
+    image={image}
+    headline={headline}
+    subtext={subtext}
+    cta={cta}
+  />
+)}
+
+{heroStyle === 'split' && (
+  <HeroSplit 
+    image={image}
+    headline={headline}
+    subtext={subtext}
+    cta={cta}
+  />
+)}
+
+{heroStyle === 'minimal' && (
+  <HeroMinimal 
+    headline={headline}
+    subtext={subtext}
+    cta={cta}
+  />
+)}
+
+{heroStyle === 'video-bg' && (
+  <HeroVideoBg 
+    image={image}
+    headline={headline}
+    subtext={subtext}
+    cta={cta}
+  />
+)}

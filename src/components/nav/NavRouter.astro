@@ -1,0 +1,39 @@
+---
+import type { SiteConfig } from '../../config/site.config';
+import NavTransparent from './NavTransparent.astro';
+import NavSolid from './NavSolid.astro';
+import NavSidebar from './NavSidebar.astro';
+
+interface Props {
+  config: SiteConfig;
+}
+
+const { config } = Astro.props;
+const { designGenome } = config;
+
+// Default to 'transparent' if not specified
+const navStyle = designGenome?.navStyle || 'transparent';
+
+const { logo, links, cta } = {
+  logo: config.name,
+  links: [
+    { text: 'About', url: '#about' },
+    { text: 'Menu', url: '#menu' },
+    { text: 'Gallery', url: '#gallery' },
+    { text: 'Hours', url: '#hours' }
+  ],
+  cta: config.hero.cta
+};
+---
+
+{navStyle === 'transparent' && (
+  <NavTransparent logo={logo} links={links} cta={cta} />
+)}
+
+{navStyle === 'solid' && (
+  <NavSolid logo={logo} links={links} cta={cta} />
+)}
+
+{navStyle === 'sidebar' && (
+  <NavSidebar logo={logo} links={links} cta={cta} />
+)}
